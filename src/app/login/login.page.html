@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Autenticacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="container">
+    <ion-card class="container">
+      
+      <ion-card-header mode="ios">
+        <ion-card-title class="title">Inicio de sesión</ion-card-title>
+      </ion-card-header>
+      <ion-img class="img" src="https://laverdadnoticias.com/__export/1688139716686/sites/laverdad/img/2023/06/30/shogun_raiden_genshin-impact.jpg_129812138.jpg"></ion-img>
+
+      <ion-item>
+        <ion-label position="floating">Nombre de usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="user"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="pass"></ion-input>
+      </ion-item>
+  
+      <ion-button color="danger" expand="block" (click)="entrar()">Iniciar sesión</ion-button>
+      <p>Para registrar una tienda da click <a (click)="registrar()">aqui</a></p>
+    </ion-card>
+  </div>
+
+  <ion-alert 
+  [isOpen]="isAlertOpen"
+  [header]="hea"
+  [subHeader]="subHea"
+  [message]="mess"
+  [buttons]="alertButtons"
+  (didDismiss)="Show(false)"
+  ></ion-alert>
+
+</ion-content>
