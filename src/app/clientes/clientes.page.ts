@@ -66,7 +66,7 @@ export class ClientesPage implements OnInit {
   // Cargar clientes
   ngOnInit() {
     console.log(this.globalService.id);
-    const uri = 'https://hjqwpru.000webhostapp.com/API/api.php?instr=consultclient&idshop=' + this.globalService.id;
+    const uri = 'https://hjqwpru.000webhostapp.com/API/api.php?instr=consultclient&idshop=';
 
     this.http.get(uri).subscribe((data:any) => { 
       this.filteredCliente = data;
