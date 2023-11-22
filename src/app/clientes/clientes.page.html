@@ -24,7 +24,7 @@
     <ion-card color="light" *ngFor="let cliente of filteredCliente;" (click)="editarCliente(cliente)">
       <ion-card-content style="display: flex; align-items: center;">
         <div style="flex: 1;">
-          <img class="img" src="{{cliente.fotografia}}" alt="fotografia" style="border-radius: 50%; max-width: 100px; margin-right: 1rem;">
+          <img class="img" src="{{cliente.fotografia}}" alt="fotografia" style="border-radius: 5%; max-width: 100px; margin-right: 1rem;">
         </div>
         <div style="flex: 2;">
           <ion-card-title style="color: #FF6347; font-size: 1.8rem;">{{cliente.nombre}}</ion-card-title>
@@ -137,6 +137,16 @@
           </ion-input>
         </ion-item>
         </ion-list>
+
+        <ion-alert 
+        [isOpen]="isAlertOpen"
+        [header]="hea"
+        [subHeader]="subHea"
+        [message]="mess"
+        [buttons]="alertButtons"
+        (didDismiss)="Show(false)"
+        ></ion-alert>
+
       </ion-content>
       <ion-footer class="ion-no-border">
         <ion-toolbar color="medium" mode="ios" style="text-align: center;">
@@ -145,16 +155,6 @@
         </ion-toolbar>
       </ion-footer>
     </ng-template> 
-    
-    <ion-alert 
-    [isOpen]="isAlertOpen"
-    [header]="hea"
-    [subHeader]="subHea"
-    [message]="mess"
-    [buttons]="alertButtons"
-    (didDismiss)="Show(false)"
-    ></ion-alert>
-
   </ion-modal>
 
   <ion-modal [isOpen]="updateClienteModal">
@@ -256,7 +256,7 @@
       </ion-content>
       <ion-footer class="ion-no-border">
         <ion-toolbar color="medium" mode="ios" style="text-align: center;">
-          <ion-button color="success" (click)="actualizarCliente(eregistro)">Guardar</ion-button>
+          <ion-button color="success" (click)="actualizarCliente()">Guardar</ion-button>
           <ion-button color="danger" (click)="eliminarCliente(eregistro.id)">Eliminar</ion-button>
           <ion-button color="dark" (click)="CancelarActualizarClientesModal()">Cancelar</ion-button>
         </ion-toolbar>

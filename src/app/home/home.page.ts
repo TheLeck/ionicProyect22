@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
 import { GlobalValsService } from '../global-vals.service';
 import { ClientesPage } from '../clientes/clientes.page';
@@ -14,7 +14,7 @@ export class HomePage {
   registros: any;
   name:string = "kaugdbla";
   url!:string;
-  constructor(public modalController: ModalController, private globalService: GlobalValsService) {
+  constructor(public modalController: ModalController, private globalService: GlobalValsService, public navCtrl: NavController) {
     //this.cargar();
     this.iniciarSesion();
   }
@@ -33,6 +33,8 @@ export class HomePage {
   }
 
   async clientesModal(){
+    const modal1 = this.navCtrl.navigateForward('/clientes')
+    /*
     const modal1 = await this.modalController.create({
       component: ClientesPage
     });
@@ -43,6 +45,7 @@ export class HomePage {
       this.name = this.globalService.name;
       this.url = this.globalService.url;
     });
+    */
   }
 
 }
