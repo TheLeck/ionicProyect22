@@ -11,8 +11,8 @@ export class RegisterPage implements OnInit {
 
   user!:string;
   name!:string;
+  email!:string;
   pass!:string;
-  shop!:string;
   url!:string;
   isAlertOpen:boolean = false;
   alertButtons=['OK'];
@@ -25,8 +25,8 @@ export class RegisterPage implements OnInit {
   }
 
   registrar(){
-    if(!!this.user && !!this.name && !!this.pass && !!this.shop && !!this.url){
-      const uri = 'https://hjqwpru.000webhostapp.com/API/api.php?instr=insertuser&usuario='+ this.user +'&contrasena='+ this.pass +'&nombre='+ this.name +'&tienda='+ this.shop +'&logo='+this.url;
+    if(!!this.user && !!this.name && !!this.pass && !!this.email && !!this.url){
+      const uri = 'https://hjqwpru.000webhostapp.com/API/api.php?instr=insertuser&usuario='+ this.user +'&contrasena='+ this.pass +'&nombre='+ this.name +'&logo='+this.url +'&email='+ this.email;
 
       this.http.get(uri).subscribe((data:any) => {
         if(data.status == "ok"){

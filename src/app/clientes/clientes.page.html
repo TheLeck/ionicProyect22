@@ -21,7 +21,7 @@
   </ion-fab>
 
   <ion-row>
-    <ion-card color="light" *ngFor="let cliente of filteredCliente;" (click)="editarCliente(cliente)">
+    <ion-card color="light" *ngFor="let cliente of filteredCliente;" (click)="editarCliente(cliente)" style="width: 100%;">
       <ion-card-content style="display: flex; align-items: center;">
         <div style="flex: 1;">
           <img class="img" src="{{cliente.fotografia}}" alt="fotografia" style="border-radius: 5%; max-width: 100px; margin-right: 1rem;">

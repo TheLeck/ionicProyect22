@@ -1,0 +1,222 @@
+<ion-header>
+  <div style="padding: 5px;">
+    <ion-row>
+
+      <ion-button mode="ios" color="medium" (click)="cerrarClientes()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>  
+    <ion-avatar>
+      <img alt="Productos" src="https://stollermexico.com/wp-content/uploads/2021/11/productos.png" />
+    </ion-avatar>
+    <h1 style="padding: 5px;color:rgb(0, 0, 0);">Productos</h1>
+ 
+  </ion-row>
+  </div>
+</ion-header>
+<ion-content mode="ios">
+  <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true">
+    <ion-fab-button (click)="AgregarClientesModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-row>
+    <ion-card color="light" *ngFor="let producto of filteredCliente;" (click)="editarCliente(producto)" style="width: 100%;">
+      <ion-card-content style="display: flex; align-items: center;">
+        <div style="flex: 1;">
+          <img class="img" src="{{producto.fotografia}}" alt="fotografia" style="border-radius: 5%; max-width: 100px; margin-right: 1rem;">
+        </div>
+        <div style="flex: 2;">
+          <ion-card-title style="color: #FF6347; font-size: 1.8rem;">{{producto.nombre}}</ion-card-title>
+          <ion-card-subtitle style="font-size: 1rem; margin-bottom: 1rem;">{{producto.descripcion}}</ion-card-subtitle>
+          <p style="font-size: 0.9rem;"><b style="color: #FF6347;">Cantidad:</b> {{producto.cantidad}}</p>
+          <p style="font-size: 0.9rem;"><b style="color: #FF6347;">Precio:</b> {{producto.precioventa}}</p>
+          <p style="font-size: 0.8rem;">{{producto.idtienda}}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+
+
+  <ion-modal [isOpen]="addClienteModal">
+    <ng-template>
+      <ion-header mode="ios">
+        <ion-title style="color: white;">
+          Agregar producto
+        </ion-title>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+        <ion-item>
+          <ion-input
+            label="Nombre"
+            [(ngModel)]="registro.nombre"
+            labelPlacement="stacked"
+            [clearInput]="true"
+            placeholder="Teclea el nombre del producto"
+            value=""
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea
+            label="Descripcion"
+            [(ngModel)]="registro.descripcion"
+            labelPlacement="stacked"
+            placeholder="Teclea la descripcion del producto"
+            value=""
+          >
+          </ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Cantidad"
+            [(ngModel)]="registro.cantidad"
+            labelPlacement="stacked"
+            [clearInput]="true"
+            placeholder="Teclea la cantidad de productos"
+            value=""
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Precio Costo"
+            [(ngModel)]="registro.preciocosto"
+            labelPlacement="stacked"
+            [clearInput]="true"
+            placeholder="Teclea el precio de compra del producto"
+            value=""
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Precio Venta"
+            [(ngModel)]="registro.precioventa"
+            labelPlacement="stacked"
+            [clearInput]="true"
+            placeholder="Teclea el precio de venta del producto"
+            value=""
+          >
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea
+            label="Fotografía"
+            [(ngModel)]="registro.fotografia"
+            labelPlacement="stacked"
+            placeholder="Teclea la URL de la fotografía del producto"
+            value=""
+          >
+          </ion-textarea>
+        </ion-item>
+        </ion-list>
+
+        <ion-alert 
+        [isOpen]="isAlertOpen"
+        [header]="hea"
+        [subHeader]="subHea"
+        [message]="mess"
+        [buttons]="alertButtons"
+        (didDismiss)="Show(false)"
+        ></ion-alert>
+
+      </ion-content>
+      <ion-footer class="ion-no-border">
+        <ion-toolbar color="medium" mode="ios" style="text-align: center;">
+          <ion-button color="success" (click)="guardarClientes()">Guardar</ion-button>
+          <ion-button color="dark" (click)="CancelarAgregarClientesModal()">Cancelar</ion-button>
+        </ion-toolbar>
+      </ion-footer>
+    </ng-template> 
+  </ion-modal>
+
+  <ion-modal [isOpen]="updateClienteModal">
+    <ng-template>
+      <ion-header mode="ios">
+        <ion-title style="color: white;">
+          Editar producto
+        </ion-title>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-input
+              label="Nombre"
+              [(ngModel)]="eregistro.nombre"
+              labelPlacement="stacked"
+              [clearInput]="true"
+              placeholder="Teclea el nombre del producto"
+              value=""
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea
+              label="Descripcion"
+              [(ngModel)]="eregistro.descripcion"
+              labelPlacement="stacked"
+              placeholder="Teclea la descripcion del producto"
+              value=""
+            >
+            </ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              label="Cantidad"
+              [(ngModel)]="eregistro.cantidad"
+              labelPlacement="stacked"
+              [clearInput]="true"
+              placeholder="Teclea la cantidad de productos"
+              value=""
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              label="Precio Costo"
+              [(ngModel)]="eregistro.preciocosto"
+              labelPlacement="stacked"
+              [clearInput]="true"
+              placeholder="Teclea el precio de compra del producto"
+              value=""
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              label="Precio Venta"
+              [(ngModel)]="eregistro.precioventa"
+              labelPlacement="stacked"
+              [clearInput]="true"
+              placeholder="Teclea el precio de venta del producto"
+              value=""
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-textarea
+              label="Fotografía"
+              [(ngModel)]="eregistro.fotografia"
+              labelPlacement="stacked"
+              placeholder="Teclea la URL de la fotografía del producto"
+              value=""
+            >
+            </ion-textarea>
+          </ion-item>
+          </ion-list>
+
+      </ion-content>
+      <ion-footer class="ion-no-border">
+        <ion-toolbar color="medium" mode="ios" style="text-align: center;">
+          <ion-button color="success" (click)="actualizarCliente()">Guardar</ion-button>
+          <ion-button color="danger" (click)="eliminarCliente(eregistro.id)">Eliminar</ion-button>
+          <ion-button color="dark" (click)="CancelarActualizarClientesModal()">Cancelar</ion-button>
+        </ion-toolbar>
+      </ion-footer>
+    </ng-template>
+   
+  </ion-modal>
+ 
+</ion-content>

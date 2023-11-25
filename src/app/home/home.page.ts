@@ -47,5 +47,8 @@ export class HomePage {
     });
     */
   }
+  productosModal(){
+    const modal1 = this.navCtrl.navigateForward('/productos')
+  }
 
 }
