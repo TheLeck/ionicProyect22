@@ -1,0 +1,110 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>reportes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">reportes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Fecha de inicio: </ion-label>
+      <ion-input
+        value="{{ date1 | date: 'yyyy-MM-dd' }}"
+        id="date1"
+        class="ion-text-end"
+      ></ion-input>
+      <ion-popover trigger="date1" size="cover">
+        <ng-template>
+          <ion-datetime
+            presentation="date"
+            [(ngModel)]="date1"
+            locale="es-ES"
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha final: </ion-label>
+      <ion-input
+        value="{{ date2 | date: 'yyyy-MM-dd' }}"
+        id="date2"
+        class="ion-text-end"
+      ></ion-input>
+      <ion-popover trigger="date2" size="cover">
+        <ng-template>
+          <ion-datetime
+            presentation="date"
+            [(ngModel)]="date2"
+            locale="es-ES"
+          ></ion-datetime>
+        </ng-template>
+      </ion-popover>
+    </ion-item>
+  </ion-list>
+  <ion-button (click)="show()">Generar reporte</ion-button>
+
+  <ion-modal [isOpen]="final" style="justify-content: flex-start;">
+    <ng-template>
+
+      <ion-header>
+        <div style="padding: 5px;">
+          <ion-row>
+      
+          <ion-avatar>
+            <img alt="Vender" src="https://static.semrush.com/blog/uploads/media/81/69/81699c8c370f16072b6655fc74dfb27c/top-5-actionable-ideas-for-upselling-your-agency-clients.svg" />
+          </ion-avatar>
+          <h1 style="padding: 5px;color:rgb(0, 0, 0);">Reporte: </h1>
+          
+          </ion-row>
+        </div>
+      </ion-header>
+
+      <ion-content style="padding: 15px;">
+        <ion-item>
+          <h1>Reporte de ventas en un periodo dado</h1>
+        </ion-item>
+
+        <ion-item>
+          <h3>Periodo: {{this.miDatePipe.transform(this.date1, 'yyyy-MM-dd')}} a {{this.miDatePipe.transform(this.date2, 'yyyy-MM-dd')}}</h3>
+        </ion-item>
+        
+        <ion-item>
+        <table>
+          <thead>
+            <tr>
+              <th>Precio Costo</th>
+              <th>Precio Venta</th>
+              <th>Ganancia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container>
+              <tr>
+                <td>{{result[0].precioCosto}}</td>
+                <td>{{result[0].precioVenta}}</td>
+                <td>{{result[0].gananciaTotal}}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </ion-item>
+
+      </ion-content>
+
+      <ion-button mode="ios" color="medium" (click)="retur()">
+        Aceptar
+      </ion-button>  
+
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>

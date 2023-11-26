@@ -53,5 +53,8 @@ export class HomePage {
   venderModal(){
     const modal1 = this.navCtrl.navigateForward('/vender')
   }
+  reportesModal(){
+    const modal1 = this.navCtrl.navigateForward('/reportes')
+  }
 
 }
