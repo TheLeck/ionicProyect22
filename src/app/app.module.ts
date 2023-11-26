@@ -11,11 +11,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginPageModule } from './login/login.module';
 import { RegisterPageModule } from './register/register.module';
 import { ClientesPageModule } from './clientes/clientes.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, LoginPageModule, RegisterPageModule, ClientesPageModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

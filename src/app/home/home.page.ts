@@ -50,5 +50,8 @@ export class HomePage {
   productosModal(){
     const modal1 = this.navCtrl.navigateForward('/productos')
   }
+  venderModal(){
+    const modal1 = this.navCtrl.navigateForward('/vender')
+  }
 
 }

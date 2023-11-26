@@ -1,0 +1,40 @@
+#button {
+    background: rgb(231, 226, 231);
+    color: #FF6347;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 8px 10px;
+
+  }
+
+#ion-fab-button {
+    background: #FF6347;
+    color: white;
+    font-weight: bold;
+
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    width: 100%;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
