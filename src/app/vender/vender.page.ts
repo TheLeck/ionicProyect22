@@ -194,7 +194,7 @@ export class VenderPage implements OnInit {
 
       if(this.currentDate != null){
         // insertar ticket
-        const url = "https://hjqwpru.000webhostapp.com/API/api.php?instr=insertticket&fecha="+ this.currentDate +"&idcliente="+ this.cliente.id +"&total="+ this.total +"&credito=no&pagado=no";
+        const url = "https://hjqwpru.000webhostapp.com/API/api.php?instr=insertticket&fecha="+ this.currentDate +"&idcliente="+ this.cliente.id +"&total="+ this.total +"&credito=no&pagado=no&idshop="+ this.globalService.id;
 
         this.http.get(url).subscribe(
           (res: any) => {
