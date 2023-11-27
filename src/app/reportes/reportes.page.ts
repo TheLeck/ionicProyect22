@@ -37,5 +37,8 @@ export class ReportesPage implements OnInit {
     this.modalController.dismiss();
     //const modal1 = this.navCtrl.navigateForward('/home')
   }
+  cerrarReportes(){
+    this.navCtrl.pop();
+  }
 
 }

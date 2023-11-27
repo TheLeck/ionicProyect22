@@ -1,14 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>reportes</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">reportes</ion-title>
-    </ion-toolbar>
+  <ion-header>
+    <div style="padding: 5px;">
+      <ion-row>
+        <ion-button mode="ios" color="medium" (click)="cerrarReportes()">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-button>  
+      <ion-avatar>
+        <img alt="Vender" src="https://static.semrush.com/blog/uploads/media/81/69/81699c8c370f16072b6655fc74dfb27c/top-5-actionable-ideas-for-upselling-your-agency-clients.svg" />
+      </ion-avatar>
+      <h1 style="padding: 5px;color:rgb(0, 0, 0);">Reporte: </h1>
+      
+      </ion-row>
+    </div>
   </ion-header>
 
   <ion-list>
